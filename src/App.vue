@@ -1,30 +1,43 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="wrapper">
+
+    <vueHeader :links="links"/>
+
+    <div class="wrapper-content">
+      <div class="container">
+        <h2>Content </h2>
+      </div>
+    </div>
+
+    <vueFooter :links="links"/>
+
+  </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+  
 </style>
+
+<script>
+import vueHeader from '@/components/vue-Header'
+import vueFooter from '@/components/vue-Footer'
+export default {
+  components:{vueHeader, vueFooter},
+  data(){
+    return{
+      links:[
+        {
+          title: "Home",
+          alias: "Home",
+          url: "/"
+        },
+        {
+          title: "About",
+          alias: "About",
+          url: "/about"
+        }
+      ]
+    }
+  }  
+}
+</script>
